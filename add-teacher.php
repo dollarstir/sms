@@ -1,4 +1,4 @@
-<?php include 'serv/lib.php';?>
+ <?php include 'serv/lib.php';?>
 <!doctype html>
 <html class="no-js" lang="">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <div class="notifyMessage">
+    <div class="notifyMessage" style="display:block;">
         <i class="close fa fa-times fa-2x"></i>
         <h4>Title</h4>
         <p>Message</p>
@@ -178,9 +178,11 @@
                                     <input name="t_photo" type="file" class="form-control-file">
                                 </div>
                                 <div class="col-12 form-group mg-t-8">
-                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add Teher</button>
+                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add Teacher</button>
                                     <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
                                 </div>
+
+                                
                             </div>
                         </form>
                     </div>

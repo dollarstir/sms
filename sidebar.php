@@ -100,6 +100,10 @@
             <li class="nav-item sidebar-nav-item">
                 <a href="#" class="nav-link"><i class="flaticon-technological"></i><span>Account</span></a>
                 <ul class="nav sub-group-menu">
+                <li class="nav-item">
+                        <a href="adf.php" class="nav-link"><i class="fas fa-angle-right"></i>Add Fees
+                            </a>
+                    </li>
                     <li class="nav-item">
                         <a href="all-fees.php" class="nav-link"><i class="fas fa-angle-right"></i>All Fees
                             Collection</a>

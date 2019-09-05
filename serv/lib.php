@@ -31,22 +31,7 @@ function contentTable($type) {
                     <td>'.$results['s_doa'].'</td>
                     <td>'.$results['s_gender'].'</td>
                     <td>
-                        <div class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                aria-expanded="false">
-                                <span class="flaticon-more-button-of-three-dots"></span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="actionView dropdown-item">
-                                    <i class="fas fa-user-cog text-dark-pastel-green"></i>
-                                    View
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="actionEdit fas fa-cogs text-dark-pastel-green"></i>
-                                    Edit
-                                </a>
-                            </div>
-                        </div>
+                        <a href="add-fees.php?fid='.$results['s_id'].'">Pay</a>
                     </td>
                 </tr>
             ';
