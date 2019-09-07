@@ -225,6 +225,38 @@ if (isset($_GET['dollar'])) {
             # code...
         }
 
+
+
+
+        if ($_GET['dollar']=="adsubjee") {
+
+
+
+
+            $subject=$_POST['subject'];
+           
+            
+
+            if (empty($subject)) {
+
+                echo'<div class="notifyMessage" style="display:block;background-color:red;">
+                        
+                            <h4>Message</h4>
+                            <p style="color:white;">Enter subject</p>
+                    </div>
+
+                    ';
+            }
+           
+        
+            else {
+
+            echo addsubject($subject); 
+            }
+
+            # code...
+        }
+
 }
 
 ?>

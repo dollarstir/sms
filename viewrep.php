@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>SMS | Add Fees</title>
+    <title>SMS | View Report</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -68,7 +68,7 @@
                         <li>
                             <a href="index.html">Home</a>
                         </li>
-                        <li>Add New Fees</li>
+                        <li>View Report</li>
                     </ul>
                 </div>
                 <!-- Breadcubs Area End Here -->
@@ -77,7 +77,7 @@
                     <div class="card-body">
                         <div class="heading-layout1">
                             <div class="item-title">
-                                <h3>Add New Fees</h3>
+                                <h3>view Report</h3>
                             </div>
                            <div class="dropdown">
                                 <a class="dropdown-toggle" href="#" role="button" 
@@ -95,7 +95,7 @@
                             <?php 
                             
                             include 'serv/conn.php';
-                            $id= $_GET['fid'];
+                            $id= $_GET['sid'];
                             $getstu= mysqli_query($conn,"SELECT * FROM  students WHERE  s_id= '$id' ");
                             $stu = mysqli_fetch_array($getstu);
                             $studid= $stu['s_id'];
@@ -108,7 +108,7 @@
                             
                             ?>
 
-                        <form class="new-added-form" id="fee-form">
+                        <form class="new-added-form" id="report-form" method="GET" action="print-report.php">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Name *</label>
@@ -120,71 +120,39 @@
                                 </div>
 
 
-                                <input type="hidden" name="gender" placeholder="" class="form-control" value="<?php echo $gender; ?> ">
                                 <input type="hidden" name="class" placeholder="" class="form-control" value="<?php echo $class; ?> ">
 
 
 
 
-                                <input type="hidden" name="s_photo" placeholder="" class="form-control" value="<?php echo $photo; ?> " readonly>
 
-                                <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Fee type*</label>
-                                    <select class="select2" name="feetype">
-                                        <option value="">Please Select</option>
-                                        <option value="school-fees">School fees</option>
-                                        <option value="transport-fees">Transport</option>
-                                        
-                                    </select>
-                                </div>
+                               
 
 
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Select Term*</label>
                                     <select class="select2" name="term">
                                         <option value="">Select term</option>
-                                        <option value="First-Term">First Term</option>
-                                        <option value="Second-Term">Second Term</option>
-                                        <option value="Third-Term">Third Term</option>
+                                        <option value="term1">First Term</option>
+                                        <option value="term2">Second Term</option>
+                                        <option value="term3">Third Term</option>
                                         
                                     </select>
                                 </div>
 
-                                <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Amount *</label>
-                                    <input type="text" name="amount" placeholder="" class="form-control">
-                                </div>
+                                
 
-                                <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Paid By:</label>
-                                    <input type="text" name="payer" placeholder="" class="form-control">
-                                </div>
+                                
 
-                                <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Payer's Phone</label>
-                                    <input type="text" name="payer_contact" placeholder="" class="form-control">
-                                </div>
+                               
                                 <!-- <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>E-Mail Address</label>
                                     <input type="text" placeholder="" class="form-control">
                                 </div> -->
-                                <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Status</label>
-                                    <select class="select2" name="status">
-                                        <option value="">Please Select</option>
-                                        <option value="full">Full-Payment</option>
-                                        <option value="part">Part-Payment</option>
-                                    </select>
-                                </div>
+                                
 
-                                <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Received by :</label>
-                                    <input type="text" name="receiver" placeholder="" class="form-control">
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Date</label>
-                                    <input type="text" name="datepaid"  class="form-control air-datepicker" data-position="bottom right" name="datepaid" value="<?php echo date("d/m/Y");?>" readonly>
-                                </div>
+                               
+                                
 
 
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
@@ -208,7 +176,7 @@
 
                                 
                                 <div class="col-12 form-group mg-t-8">
-                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Get Report</button>
                                     <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
                                 </div>
                             </div>

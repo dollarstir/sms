@@ -1,5 +1,4 @@
-<?php include 'serv/lib.php';?>
-<?php $elem = contentDetail('teachers', 0);?>
+<?php include 'core.php';?>
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -7,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PurpleSoft | All Teachers</title>
+    <title>PurpleSoft | All Students</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -52,74 +51,81 @@
             <div class="dashboard-content-one">
                 <!-- Breadcubs Area Start Here -->
                 <div class="breadcrumbs-area">
-                    <h3>Teacher</h3>
+                    <h3>Students</h3>
                     <ul>
                         <li>
                             <a href="index.php">Home</a>
                         </li>
-                        <li>All Teachers</li>
+                        <li>All Students</li>
                     </ul>
                 </div>
                 <!-- Breadcubs Area End Here -->
-                <!-- Teacher Table Area Start Here -->
+                <!-- Student Table Area Start Here -->
+
                 <div class="card height-auto">
                     <div class="card-body">
                         <div class="heading-layout1">
                             <div class="item-title">
-                                <h3>All Teachers Data</h3>
+                                <h3>All Students Data</h3>
                             </div>
-                           <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" role="button" 
-                                data-toggle="dropdown" aria-expanded="false">...</a>
-        
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                    aria-expanded="false">...</a>
+
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                    <a class="dropdown-item" href="#"><i class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                                    <a class="dropdown-item" href="#"><i
+                                            class="fas fa-times text-orange-red"></i>Close</a>
+                                    <a class="dropdown-item" href="#"><i
+                                            class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                    <a class="dropdown-item" href="#"><i
+                                            class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
                                 </div>
                             </div>
                         </div>
                         <form class="mg-b-20">
                             <div class="row gutters-8">
                                 <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
-                                    <input type="text" placeholder="Search by ID ..." class="rollSearch form-control">
+                                    <input type="text" placeholder="Search by Roll ..." class="form-control rollSearch">
                                 </div>
                                 <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
-                                    <input type="text" placeholder="Search by Name ..." class="nameSearch form-control">
+                                    <input class="nameSearch form-control" type="text" placeholder="Search by Name ...">
                                 </div>
                                 <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
-                                    <input type="text" placeholder="Search by Any Criteria ..." class="Search form-control">
+                                    <input class="Search form-control" type="text" placeholder="Search by Any Criteria ...">
                                 </div>
+                                <!-- <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                                    <button type="submit" class="fw-btn-fill btn-gradient-yellow allSearch">SEARCH</button>
+                                </div> -->
                             </div>
                         </form>
                         <div class="table-responsive">
-                            <table class="customTable table display data-table text-nowrap">
+                            <table class="table display data-table text-nowrap customTable">
                                 <thead>
                                     <tr>
-                                        <th> 
+                                        <th>
                                             <div class="form-check">
                                                 <input type="checkbox" class="form-check-input checkAll">
-                                                <label class="form-check-label">ID</label>
+                                                <label class="form-check-label actionRoll">Roll</label>
                                             </div>
                                         </th>
                                         <th>Photo</th>
                                         <th>Name</th>
-                                        <th>Gender</th>
                                         <th>Class</th>
-                                        <th>Phone</th>
-                                        <th>Date Of Appointment</th>
+                                        <th>Date Of Birth</th>
+                                        <th>Date Of Admission</th>
+                                        <th>Gender</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php contentTable('teachers');?>
-                                </tbody>
+                                    <?php getreporttud();?>
+                                </tbody> 
                             </table>
                         </div>
                     </div>
                 </div>
-                <!-- Student Table Area Start Here -->
-                <div style="position: relative" id="detailCard" class="detailCard card height-auto">
+
+                <!-- <div style="position: relative" class="detailCard card height-auto">
                     <div id="preloader2" style="display: none"></div>
                     <div class="card-body">
                         <div class="heading-layout1">
@@ -129,70 +135,70 @@
                         </div>
                         <div class="single-info-details">
                             <div class="item-img">
-                                <img class="detailImg" src="img/customImg/<?php echo $elem['t_photo'];?>" alt="teacher">
+                                <img class="detailImg" src="img/customImg/<?php echo $elem['s_photo'];?>" alt="student">
                             </div>
                             <div class="item-content">
                                 <div class="header-inline item-header">
-                                    <h3 class="text-dark-medium font-medium"><span class="t_fName"><?php echo $elem['t_fName'];?></span> <span class="t_lName"><?php echo $elem['t_lName'];?></span></h3>
+                                    <h3 class="text-dark-medium font-medium"><span class="s_fName"><?php echo $elem['s_fName']?></span> <span class="s_lName"><?php echo $elem['s_lName']?></span></h3>
                                     <div class="header-elements">
                                         <ul>
                                             <li class="actionPrevious"><a><i class="fa fa-arrow-left"></i></a></li>
                                             <li class="actionEdit"><a><i class="far fa-edit"></i></a></li>
                                             <li class="actionNext"><a><i class="fa fa-arrow-right"></i></a></li>
-                                        </ul>
+                                        </ul> 
                                     </div>
                                 </div>
-                                <p class="t_info"><?php echo $elem['t_info'];?></p>
+                                <p class="s_info"><?php echo $elem['s_info']?></p>
                                 <div class="info-table table-responsive">
                                     <table class="table text-nowrap">
                                         <tbody>
                                             <tr>
                                                 <td>Name:</td>
-                                                <td class="font-medium text-dark-medium"><span class="t_fName"><?php echo $elem['t_fName'];?></span> <span class="t_lName"><?php echo $elem['t_lName'];?></span></td>
+                                                <td class="font-medium text-dark-medium"><span class="s_fName"><?php $elem['s_fName']?></span> <span class="s_lName"><?php echo $elem['s_lName']?></span></td>
                                             </tr>
                                             <tr>
                                                 <td>Gender:</td>
-                                                <td class="font-medium text-dark-medium t_gender"><?php echo $elem['t_gender'];?></td>
+                                                <td class="s_gender font-medium text-dark-medium"><?php echo $elem['s_gender']?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Father Name:</td>
+                                                <td class="s_fatherName font-medium text-dark-medium"><?php echo $elem['s_fatherName']?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mother Name:</td>
+                                                <td class="s_motherName font-medium text-dark-medium"><?php echo $elem['s_motherName']?></td>
                                             </tr>
                                             <tr>
                                                 <td>Date Of Birth:</td>
-                                                <td class="font-medium text-dark-medium t_dob"><?php echo $elem['t_dob'];?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Date of Appointment:</td>
-                                                <td class="font-medium text-dark-medium t_Appoint"><?php echo $elem['t_doAppoint'];?></td>
+                                                <td class="s_dob font-medium text-dark-medium"><?php echo $elem['s_dob']?></td>
                                             </tr>
                                             <tr>
                                                 <td>Religion:</td>
-                                                <td class="font-medium text-dark-medium t_religion"><?php echo $elem['t_religion'];?></td>
+                                                <td class="s_religion font-medium text-dark-medium"><?php echo $elem['s_religion']?></td>
                                             </tr>
                                             <tr>
-                                                <td>Phone:</td>
-                                                <td class="font-medium text-dark-medium t_phone"><?php echo $elem['t_phone'];?></td>
+                                                <td>Father Occupation:</td>
+                                                <td class="p_job font-medium text-dark-medium"><?php echo $elem['p_job']?></td>
                                             </tr>
                                             <tr>
-                                                <td>Subject(s):</td>
-                                                <td class="font-medium text-dark-medium t_nationality"><?php echo $elem['t_nationality'];?></td>
+                                                <td>Admission Date:</td>
+                                                <td class="s_doa font-medium text-dark-medium"><?php echo $elem['s_doa']?></td>
                                             </tr>
                                             <tr>
                                                 <td>Class:</td>
-                                                <td class="font-medium text-dark-medium t_class"><?php echo $elem['t_class'];?></td>
+                                                <td class="s_class font-medium text-dark-medium"><?php echo $elem['s_class']?></td>
                                             </tr>
                                             <tr>
-                                                <td>SSNIT number:</td>
-                                                <td class="font-medium text-dark-medium t_SSNITNum"><?php echo $elem['t_SSNITNum'];?></td>
+                                                <td>Roll:</td>
+                                                <td class="spec s_id font-medium text-dark-medium"><?php echo $elem['s_id']?></td>
                                             </tr>
                                             <tr>
-                                                <td>NHIS number:</td>
-                                                <td class="font-medium text-dark-medium t_NHISNum"><?php echo $elem['t_NHISNum'];?></td>
+                                                <td>Address:</td>
+                                                <td class="font-medium text-dark-medium">No Selection Done</td>
                                             </tr>
                                             <tr>
-                                                <td>ID:</td>
-                                                <td class="font-medium text-dark-medium t_id"><?php echo $elem['t_id'];?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Marital Status:</td>
-                                                <td class="font-medium text-dark-medium t_maritalStats"><?php echo $elem['t_maritalStats'];?></td>
+                                                <td>Emergency Contact:</td>
+                                                <td class="s_homTelNum font-medium text-dark-medium"><?php echo $elem['s_homTelNum']?></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -200,9 +206,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+
                 <!-- Student Table Area End Here -->
-                <!-- Teacher Table Area End Here -->
                 <?php include 'footer.php';?>
             </div>
         </div>
@@ -224,7 +230,6 @@
     <script src="js/main.js"></script>
     <!-- User Defined -->
     <script src="js/custom.js"></script>
-
 
 </body>
 </html>

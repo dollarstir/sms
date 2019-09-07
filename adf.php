@@ -1,5 +1,4 @@
-<?php include 'serv/lib.php';?>
-<?php $elem = contentDetail('students', 0);?>
+<?php include 'core.php';?>
 
 <!doctype html>
 <html class="no-js" lang="">
@@ -119,7 +118,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php contentTable('students');?>
+                                    <?php getfeestud();?>
                                 </tbody> 
                             </table>
                         </div>

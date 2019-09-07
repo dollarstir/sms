@@ -110,7 +110,7 @@
                     </div>
                 </div>
 
-                <div style="position: relative" class="detailCard card height-auto">
+                <div style="position: relative" id="detailCard" class="detailCard card height-auto">
                     <div id="preloader2" style="display: none"></div>
                     <div class="card-body">
                         <div class="heading-layout1">

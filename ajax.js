@@ -68,6 +68,28 @@ $("#ad-report").submit(function (event) {
 
   
 });
+
+$("#ad-subj").submit(function (event) {
+    
+
+    event.preventDefault();
+
+    var options = {
+      url: 'process.php?dollar=adsubjee',
+      type: 'post',
+      data: new FormData(this),
+      cache: false,
+      processData: false,
+      contentType: false,
+  //    beforeSend: prog,
+      success: regsuccess,
+  }
+
+  $.ajax(options);
+
+  
+});
+
   
 
     

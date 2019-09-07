@@ -124,9 +124,9 @@
                             </table>
                         </div>
                     </div>
-                </div>
+                </div>bv
 
-                <div style="position: relative" class="detailCard card height-auto">
+                <div style="position: relative" id="detailCard" class="detailCard card height-auto">
                     <div id="preloader2" style="display: none"></div>
                     <div class="card-body">
                         <div class="heading-layout1">
@@ -144,7 +144,7 @@
                                     <div class="header-elements">
                                         <ul>
                                             <li class="actionPrevious"><a><i class="fa fa-arrow-left"></i></a></li>
-                                            <li class="actionEdit"><a><i class="far fa-edit"></i></a></li>
+                                            <li class="actionEdit"><a href="admit-form-update.php?target=<?php echo $elem['s_id']?>"><i class="far fa-edit"></i></a></li>
                                             <li class="actionNext"><a><i class="fa fa-arrow-right"></i></a></li>
                                         </ul> 
                                     </div>
@@ -155,7 +155,7 @@
                                         <tbody>
                                             <tr>
                                                 <td>Name:</td>
-                                                <td class="font-medium text-dark-medium"><span class="s_fName"><?php $elem['s_fName']?></span> <span class="s_lName"><?php echo $elem['s_lName']?></span></td>
+                                                <td class="font-medium text-dark-medium"><span class="s_fName"><?php echo $elem['s_fName']?></span> <span class="s_lName"><?php echo $elem['s_lName']?></span></td>
                                             </tr>
                                             <tr>
                                                 <td>Gender:</td>

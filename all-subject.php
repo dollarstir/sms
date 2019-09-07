@@ -1,3 +1,8 @@
+<?php include 'core.php';
+
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -32,6 +37,10 @@
 </head>
 
 <body>
+
+<div id="mcon">
+
+</div>
     <!-- Preloader Start Here -->
     <div id="preloader"></div>
     <!-- Preloader End Here -->
@@ -83,11 +92,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form class="new-added-form">
+                                <form class="new-added-form" id="ad-subj">
                                     <div class="row">
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
                                             <label>Subject Name *</label>
-                                            <input type="text" placeholder="" class="form-control">
+                                            <input type="text" name="subject" placeholder="" class="form-control">
                                         </div>
                                         <div class="col-12 form-group mg-t-8">
                                             <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
@@ -139,38 +148,14 @@
                                                         <label class="form-check-label">ID</label>
                                                     </div>
                                                 </th>
-                                                <th>Subject Name</th>
-                                                <th>Number Of Subject Teacher</th>
-                                                <th>Date added</th>
+                                                
+                                                <th>SUJECT</th>
+                                                
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input">
-                                                        <label class="form-check-label">#0028</label>
-                                                    </div>
-                                                </td>
-                                                <td>Science</td>
-                                                <td>6</td>
-                                                <td>02/05/2001</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                                            aria-expanded="false">
-                                                            <span class="flaticon-more-button-of-three-dots"></span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item"><i
-                                                                    class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                                            <a class="dropdown-item"><i
-                                                                    class="fa fa-times-circle text-orange-red"></i>Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            <?php allsubject();?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -186,6 +171,7 @@
     </div>
     <!-- jquery-->
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="ajax.js"></script>
     <!-- Plugins js -->
     <script src="js/plugins.js"></script>
     <!-- Popper js -->

@@ -1,3 +1,9 @@
+<?php
+include 'serv/conn.php';
+// include 'serv/lib.php';
+include 'serv/process.php';
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -11,7 +17,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="css/normalize.css">
-    <!-- Main CSS -->
+    <!-- Main CSS --> 
     <link rel="stylesheet" href="css/main.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -32,6 +38,11 @@
 </head>
 
 <body>
+    <div class="notifyMessage">
+        <i class="close fa fa-times fa-2x"></i>
+        <h4>Title</h4>
+        <p>Message</p>
+    </div>
     <!-- Preloader Start Here -->
     <div id="preloader"></div>
     <!-- Preloader End Here -->
@@ -62,6 +73,7 @@
                 <!-- Breadcubs Area End Here -->
                 <!-- Class Routine Area Start Here -->
                 <div class="row">
+                    <div id="preloader2" style="display: none"></div>
                     <div class="col-4-xxxl col-12">
                         <div class="card height-auto">
                             <div class="card-body">
@@ -83,52 +95,67 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form class="new-added-form">
+                                <form class="new-added-form add">
+                                    <input type="hidden" name="addItem" value="routine">
                                     <div class="row">
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
                                             <label>Subject Name *</label>
-                                            <select class="select2">
+                                            <select name="cr_subject" class="select2">
                                                 <option value="">Please Select</option>
-                                                <option value="1">Bangla</option>
-                                                <option value="2">English</option>
-                                                <option value="3">Mathematics</option>
-                                                <option value="3">Economics</option>
-                                                <option value="3">Chemistry</option>
+                                                <?php
+                                                    $sql_sub = "SELECT * FROM subject";
+                                                    $query_sub = mysqli_query($conn, $sql_sub);
+
+                                                    while($results = mysqli_fetch_array($query_sub)) {
+                                                        echo '<option value="'.$results["sub_id"].'">'.$results["sub_name"].'</option>';
+                                                    }
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
                                             <label>Select Class *</label>
-                                            <select class="select2">
-                                                <option value="0">Please Select</option>
-                                                <option value="1">Play</option>
-                                                <option value="2">Nursery</option>
-                                                <option value="3">One</option>
-                                                <option value="3">Two</option>
-                                                <option value="3">Three</option>
+                                            <select name="cr_class" class="select2">
+                                                <option value="">Please Select</option>
+                                                <?php form_options("class", '')?>
                                             </select>
                                         </div>
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
                                             <label>Teacher</label>
-                                            <select class="select2">
-                                                <option value="0">Please Select</option>
-                                                <option value="1">Mark</option>
-                                                <option value="2">John</option>
-                                                <option value="3">Ben</option>
+                                            <select name="cr_teacher" class="select2">
+                                                <option value="">Please Select</option>
+                                                <?php
+                                                    $sql_teach = "SELECT * FROM teachers";
+                                                    $query_teach = mysqli_query($conn, $sql_teach);
+
+                                                    while($results = mysqli_fetch_array($query_teach)) {
+                                                        echo '<option value="'.$results["t_id"].'">'.$results["t_fName"].' '.$results["t_lName"].'</option>';
+                                                    }
+                                                ?>
                                             </select>
                                         </div>
-                                        <div class="col-md-12 d-none d-xl-block">
-                                    
+                                        <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                            <label>Day</label>
+                                            <select name="cr_day" class="select2">
+                                                <option value="">Please Select</option>
+                                                <option value="Monday">Monday</option>
+                                                <option value="Tuesday">Tuesday</option>
+                                                <option value="Wednesday">Wednesday</option>
+                                                <option value="Thursday">Thursday</option>
+                                                <option value="Friday">Friday</option>
+                                                <option value="Saturday">Saturday</option>
+                                                <option value="Sunday">Sunday</option>
+                                            </select>
                                         </div>
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
                                             <label>Start time *</label>
-                                            <input name="s_doa" type="time" class="form-control">
+                                            <input name="cr_startTime" type="text" class="form-control">
                                         </div>
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
                                             <label>End time *</label>
-                                            <input name="s_doa" type="time" class="form-control">
+                                            <input name="cr_endTime" type="text" class="form-control">
                                         </div>
                                         <div class="col-12 form-group mg-t-8">
-                                            <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                                            <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add Routine</button>
                                             <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
                                         </div>
                                     </div>
@@ -161,19 +188,18 @@
                                 <form class="mg-b-20">
                                     <div class="row gutters-8">
                                         <div class="col-lg-4 col-12 form-group">
-                                            <input type="text" placeholder="Search by Day ..." class="form-control">
+                                            <input type="text" placeholder="Search by Day ..." class="rollSearch form-control">
                                         </div>
                                         <div class="col-lg-4 col-12 form-group">
-                                            <input type="text" placeholder="Search by Class ..." class="form-control">
+                                            <input type="text" placeholder="Search by Subject ..." class="nameSearch form-control">
                                         </div>
                                         <div class="col-lg-4 col-12 form-group">
-                                            <input type="text" placeholder="Search by Any Criteria ..." class="form-control">
+                                            <input type="text" placeholder="Search by Any Criteria ..." class="form-control Search">
                                         </div>
                                     </div>
                                 </form>
                                 <div class="table-responsive">
-                                    <table class="table display data-table text-nowrap">
-                                        <thead>
+                                    <table class="table display data-table text-nowrap">                                             <thead>
                                             <tr>
                                                 <th>
                                                     <div class="form-check">
@@ -185,38 +211,61 @@
                                                 <th>Subject</th>
                                                 <th>Teacher</th>
                                                 <th>Time</th>
-                                                <th>Added Date</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input">
-                                                        <label class="form-check-label">Sunday</label>
-                                                    </div>
-                                                </td>
-                                                <td>4</td>
-                                                <td>Accounting</td>
-                                                <td>Mike John</td>
-                                                <td><span>10.00 am</span> - <span>11.00 am</span></td>
-                                                <td>20/06/2019</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                                            aria-expanded="false">
-                                                            <span class="flaticon-more-button-of-three-dots"></span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#"><i
-                                                                    class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                                            <a class="dropdown-item" href="#"><i
-                                                                    class="fas fa-times-circle text-red"></i>Delete</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                          <?php 
+                                            $sql = "SELECT * FROM class_routine";
+                                            $query = mysqli_query($conn, $sql);
+                                             while($results = mysqli_fetch_array($query)) {
+
+                                                $sql_c = "SELECT c_name FROM class WHERE c_id = {$results['cr_classID']}";
+                                                $query_c = mysqli_query($conn, $sql_c);
+                                                $results_c = mysqli_fetch_array($query_c);
+                                                $results['cr_classID'] = $results_c['c_name'];
+
+                                                $sql_s = "SELECT sub_name FROM subjects WHERE sub_id = {$results['cr_subjectID']}";
+                                                $query_s = mysqli_query($conn, $sql_s);
+                                                $results_s = mysqli_fetch_array($query_s);
+                                                $results['cr_subjectID'] = $results_s['sub_name'];
+
+                                                $sql_t = "SELECT t_fName, t_lName FROM teachers WHERE t_id = {$results['cr_teacherID']}";
+                                                $query_t = mysqli_query($conn, $sql_t);
+                                                $results_t = mysqli_fetch_array($query_t);
+                                                $results['cr_teacherID'] = $results_t['t_fName'].' '.$results_t['t_lName'];
+
+                                                 echo '
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input">
+                                                                <label class="form-check-label">'.$results['cr_day'].'</label>
+                                                            </div>
+                                                        </td>
+                                                        <td>'.$results['cr_classID'].'</td>
+                                                        <td>'.$results['cr_subjectID'].'</td>
+                                                        <td>'.$results['cr_teacherID'].'</td>
+                                                        <td><span>'.$results['cr_startTime'].'</span> - <span>'.$results['cr_endTime'].'</span></td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                                                    aria-expanded="false">
+                                                                    <span class="flaticon-more-button-of-three-dots"></span>
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-right">
+                                                                    <a class="dropdown-item" href="#"><i
+                                                                            class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                                                    <a class="dropdown-item" href="#"><i
+                                                                            class="fas fa-times-circle text-red"></i>Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                 ';
+                                            }
+                                          
+                                          ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -246,6 +295,7 @@
     <script src="js/jquery.dataTables.min.js"></script>
     <!-- Custom Js -->
     <script src="js/main.js"></script>
-
+    <!-- User Defined -->
+    <script src="js/custom.js"></script>
 </body>
 </html>

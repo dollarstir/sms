@@ -1,4 +1,12 @@
-<?php include 'serv/lib.php';?>
+<?php 
+include 'serv/lib.php';
+include 'serv/conn.php';
+
+$sql = "SELECT * FROM teachers WHERE t_id = {$_GET['target']}";
+$query = mysqli_query($conn, $sql);
+$results = mysqli_fetch_array($query);
+
+?>
 <!doctype html>
 <html class="no-js" lang="">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -44,14 +52,12 @@
     <div id="wrapper" class="wrapper bg-ash">
          <!-- Header Menu Area Start Here -->
 
-        <?php include 'header.php';?>
         
         <!-- Header Menu Area End Here -->
         <!-- Page Area Start Here -->
         <div class="dashboard-page-one">
             <!-- Sidebar Area Start Here -->
 
-            <?php include 'sidebar.php';?>
 
             <!-- Sidebar Area End Here -->
             <div class="dashboard-content-one">
@@ -72,7 +78,7 @@
                     <div class="card-body">
                         <div class="heading-layout1">
                             <div class="item-title">
-                                <h3>Add New Teacher</h3>
+                                <h3>Updating Teachers Info</h3>
                             </div>
                            <div class="dropdown">
                                 <a class="dropdown-toggle" href="#" role="button" 
@@ -86,16 +92,17 @@
                             </div>
                         </div>
                         <form class="new-added-form customForm">
-                            <input type="hidden" name="act" value="addTeacher">
+                            <input type="hidden" name="act" value="updateTeacher">
+                            <input type="hidden" name="t_id" value="<?php echo $results['t_id']?>">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>First Name *</label>
-                                    <input name="t_fName" type="text" placeholder="" class="form-control">
+                                    <input name="t_fName" type="text" placeholder="" class="form-control" value="<?php echo $results['t_fName'];?>">
                                     <span class="formSpan" id="t_fName">Unknown</span>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Last Name *</label>
-                                    <input name="t_lName" type="text" placeholder="" class="form-control">
+                                    <input name="t_lName" type="text" placeholder="" class="form-control" value="<?php echo $results['t_lName'];?>">
                                     <span class="formSpan" id="t_lName">Unknown</span>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
@@ -106,10 +113,13 @@
                                         <option value="Female">Female</option>
                                     </select>
                                     <span class="formSpan" id="t_gender">Unknown</span>
+                                    <script>
+                                        $("option[value='<?php echo $results['t_gender'];?>']").attr("selected", "selected");
+                                    </script>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Date Of Birth *</label>
-                                    <input name="t_dob" type="text" placeholder="yyyy-mm-dd" class="form-control air-datepicker">
+                                    <input name="t_dob" type="text" placeholder="yyyy-mm-dd" class="form-control air-datepicker" value="<?php echo $results['t_dob'];?>">
                                     <i class="far fa-calendar-alt"></i>
                                     <span class="formSpan" id="t_dob">Unknown</span>
                                 </div>
@@ -124,15 +134,18 @@
                                         <option value="Others">Others</option>
                                     </select>
                                     <span class="formSpan" id="t_religion">Unknown</span>
+                                    <script>
+                                        $("option[value='<?php echo $results['t_religion'];?>']").attr("selected", "selected");
+                                    </script>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Nationality *</label>
-                                    <input name="t_nationality" type="text" placeholder="" class="form-control">
+                                    <input name="t_nationality" type="text" placeholder="" class="form-control" value="<?php echo $results['t_nationality'];?>">
                                     <span class="formSpan" id="t_nationality">Unknown</span>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>E-Mail</label>
-                                    <input name="t_email" type="email" placeholder="" class="form-control">
+                                    <input name="t_email" type="email" placeholder="" class="form-control" value="<?php echo $results['t_email'];?>">
                                     <span class="formSpan" id="t_email">Unknown</span>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
@@ -142,10 +155,13 @@
                                         <?php form_options('class', '');?>
                                     </select>
                                     <span class="formSpan" id="t_class">Unknown</span>
+                                    <script>
+                                        $("option[value='<?php echo $results['t_class'];?>']").attr("selected", "selected");
+                                    </script>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Date Of Appointment *</label>
-                                    <input name="t_doAppoint" type="text" placeholder="yyyy-mm-dd" class="form-control air-datepicker">
+                                    <input name="t_doAppoint" type="text" placeholder="yyyy-mm-dd" class="form-control air-datepicker" value="<?php echo $results['t_doAppoint'];?>">
                                     <i class="far fa-calendar-alt"></i>
                                     <span class="formSpan" id="t_doAppoint">Unknown</span>
                                 </div>
@@ -157,38 +173,42 @@
                                         <option value="Married">Married</option>
                                     </select>
                                     <span class="formSpan" id="t_maritalStats">Unknown</span>
+                                    <script>
+                                        $("option[value='<?php echo $results['t_maritalStats'];?>']").attr("selected", "selected");
+                                    </script>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>SSNIT Number</label>
-                                    <input name="t_SSNITNum" type="text" placeholder="" class="form-control">
+                                    <input name="t_SSNITNum" type="text" placeholder="" class="form-control" value="<?php echo $results['t_SSNITNum'];?>">
                                     <span class="formSpan" id="t_SSNITNum">Unknown</span>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>NHIS Number</label>
-                                    <input name="t_NHISNum" type="text" placeholder="" class="form-control">
+                                    <input name="t_NHISNum" type="text" placeholder="" class="form-control" value="<?php echo $results['t_NHISNum'];?>">
                                     <span class="formSpan" id="t_NHISNum">Unknown</span>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Phone *</label>
-                                    <input name="t_phone" type="text" placeholder="" class="form-control">
+                                    <input name="t_phone" type="text" placeholder="" class="form-control" value="<?php echo $results['t_phone'];?>">
                                     <span class="formSpan" id="t_phone">Unknown</span>
                                 </div>
                                 <div class="col-lg-6 col-12 form-group">
                                     <label>Short BIO</label>
-                                    <textarea class="textarea form-control" name="t_info" id="form-message" cols="10" rows="9"></textarea>
+                                    <textarea class="textarea form-control" name="t_info" id="form-message" cols="10" rows="9"><?php echo $results['t_info'];?></textarea>
                                     <span class="formSpan" id="t_info">Unknown</span>
                                 </div>
                                 <div class="col-lg-6 col-12 form-group">
                                     <label>Address</label>
-                                    <textarea class="textarea form-control" name="t_address" id="form-message" cols="10" rows="9"></textarea>
+                                    <textarea class="textarea form-control" name="t_address" id="form-message" cols="10" rows="9"><?php echo $results['t_address'];?></textarea>
                                     <span class="formSpan" id="t_address">Unknown</span>
                                 </div>
                                 <div class="col-lg-6 col-12 form-group mg-t-30">
+                                    <img style="height: 100px; width: 100px" src="img/customImg/<?php echo $results['t_photo']?>">
                                     <label class="text-dark-medium">Upload Student Photo (150px X 150px)</label>
                                     <input name="t_photo" type="file" class="form-control-file">
                                 </div>
                                 <div class="col-12 form-group mg-t-8">
-                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add Teher</button>
+                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Update Teacher</button>
                                     <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
                                 </div>
                             </div>

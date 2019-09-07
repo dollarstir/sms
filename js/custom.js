@@ -114,6 +114,7 @@ $(document).ready(function() {
 
 
 
+
     ////////////////////////////////////////////////////////////
     ////////////// Functions For Form Submission ///////////////
     ////////////////////////////////////////////////////////////
@@ -197,6 +198,35 @@ $(document).ready(function() {
         }
     }
 
+    function successFunc3(response, _this) {
+        _this.children("#preloader2").fadeOut(500);
+
+        if(response['status'] == 'Success') {
+            $(".notifyMessage h4").html("Action Successfully");
+            $(".notifyMessage p").html(response['response']);
+            $(".notifyMessage").css('background', 'rgba(115, 228, 100, 0.93)').slideDown(800);
+
+            setTimeout(() => {
+                $(".notifyMessage").slideUp(800);
+            }, 5000);
+
+        } else {
+            responses = response['response']
+
+            $(".notifyMessage h4").html("Error");
+            $(".notifyMessage p").html("");
+            $(".notifyMessage").css('background', 'rgba(220, 100, 100, 0.93)').slideDown(800);
+
+            // setTimeout(() => {
+            //     $(".notifyMessage").slideUp(800);
+            // }, 5000);
+
+            for (var keys in responses) {
+                $(".notifyMessage p").append(responses[keys]);
+            }
+        }
+    }
+
     ////////////////////// Form Submition //////////////////////
     ///.......................................................//
     ////////////////////////////////////////////////////////////
@@ -247,4 +277,36 @@ $(document).ready(function() {
             success: function(response) {successFunc2(response, _this)}
         })
     })
+
+
+    ///////////////////////// Promotion ////////////////////////
+    ///.......................................................//
+    ////////////////////////////////////////////////////////////
+
+    $(".promo_sel").on("change", function() {
+        var value = $(this).val();
+
+        $(".std_promo_list").load("serv/std_promo.php?func="+value);
+    })
+
+    $(".promoForm").submit(function(e) {
+        e.preventDefault();
+
+        var _this = $(this).parent().parent();
+
+        var options = {
+            url: 'serv/process.php?func=promote',
+            type: 'post',
+            data: new FormData(this),
+            dataType: 'json',
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function() {loadingFunc(_this)},
+            success: function(response) {successFunc3(response, _this)}
+        } 
+
+        $.ajax(options);
+ 
+    });
 })
