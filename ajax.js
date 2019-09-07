@@ -9,28 +9,28 @@ $(document).ready(function () {
     function regsuccess(response) {
 
         $("#mcon").html(response);
-        $("#mess").fadeOut(15000);
+        $(".notifyMessage").fadeOut(15000);
 
         
     };
 
 
 
-    function verifysuccess(response) {
+//     function verifysuccess(response) {
 
-      $(".sh").html(response);
-      $("#erro").fadeOut(15000);
+//       $(".sh").html(response);
+//       $("#erro").fadeOut(15000);
 
       
-  };
+//   };
 
-  $("#myform").submit(function (event) {
+  $("#fee-form").submit(function (event) {
     
 
         event.preventDefault();
 
         var options = {
-          url: 'action.php?dollar=reg',
+          url: 'process.php?dollar=adfee',
           type: 'post',
           data: new FormData(this),
           cache: false,
@@ -43,30 +43,32 @@ $(document).ready(function () {
       $.ajax(options);
 
       
-  });
+});
 
 
 
-  $("#vform").submit(function (event) {
+
+$("#ad-report").submit(function (event) {
     
 
     event.preventDefault();
 
-    var optionsveri = {
-      url: 'verification.php',
+    var options = {
+      url: 'process.php?dollar=adreport',
       type: 'post',
       data: new FormData(this),
       cache: false,
       processData: false,
       contentType: false,
   //    beforeSend: prog,
-      success: verifysuccess,
+      success: regsuccess,
   }
 
-  $.ajax(optionsveri);
+  $.ajax(options);
 
   
 });
+  
 
     
 });

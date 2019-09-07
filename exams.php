@@ -1,13 +1,15 @@
+<?php
+include 'core.php';
+?>
 <!doctype html>
 <html class="no-js" lang="">
 
 
-<!-- Mirrored from www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/exam-grade.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Aug 2019 14:38:38 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>AKKHOR | Exam Grade</title>
+    <title>SMS | Add Exam </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -37,6 +39,13 @@
 </head>
 
 <body>
+
+
+<div id="mcon">
+
+</div>
+
+
     <!-- Preloader Start Here -->
     <div id="preloader"></div>
     <!-- Preloader End Here -->
@@ -243,206 +252,7 @@
         <!-- Page Area Start Here -->
         <div class="dashboard-page-one">
             <!-- Sidebar Area Start Here -->
-            <div class="sidebar-main sidebar-menu-one sidebar-expand-md sidebar-color">
-               <div class="mobile-sidebar-header d-md-none">
-                    <div class="header-logo">
-                        <a href="index.html"><img src="img/logo1.png" alt="logo"></a>
-                    </div>
-               </div>
-                <div class="sidebar-menu-content">
-                    <ul class="nav nav-sidebar-menu sidebar-toggle-view">
-                        <li class="nav-item sidebar-nav-item">
-                            <a href="#" class="nav-link"><i class="flaticon-dashboard"></i><span>Dashboard</span></a>
-                            <ul class="nav sub-group-menu">
-                                <li class="nav-item">
-                                    <a href="index.html" class="nav-link"><i class="fas fa-angle-right"></i>Admin</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index3.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i>Students</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index4.html" class="nav-link"><i class="fas fa-angle-right"></i>Parents</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index5.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i>Teachers</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item sidebar-nav-item">
-                            <a href="#" class="nav-link"><i class="flaticon-classmates"></i><span>Students</span></a>
-                            <ul class="nav sub-group-menu">
-                                <li class="nav-item">
-                                    <a href="all-student.html" class="nav-link"><i class="fas fa-angle-right"></i>All
-                                        Students</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="student-details.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i>Student Details</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="admit-form.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i>Admission Form</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="student-promotion.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i>Student Promotion</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item sidebar-nav-item">
-                            <a href="#" class="nav-link"><i
-                                    class="flaticon-multiple-users-silhouette"></i><span>Teachers</span></a>
-                            <ul class="nav sub-group-menu">
-                                <li class="nav-item">
-                                    <a href="all-teacher.html" class="nav-link"><i class="fas fa-angle-right"></i>All
-                                        Teachers</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="teacher-details.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i>Teacher Details</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="add-teacher.html" class="nav-link"><i class="fas fa-angle-right"></i>Add
-                                        Teacher</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="teacher-payment.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i>Payment</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item sidebar-nav-item">
-                            <a href="#" class="nav-link"><i class="flaticon-couple"></i><span>Parents</span></a>
-                            <ul class="nav sub-group-menu">
-                                <li class="nav-item">
-                                    <a href="all-parents.html" class="nav-link"><i class="fas fa-angle-right"></i>All
-                                        Parents</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="parents-details.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i>Parents Details</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="add-parents.html" class="nav-link"><i class="fas fa-angle-right"></i>Add
-                                        Parent</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item sidebar-nav-item">
-                            <a href="#" class="nav-link"><i class="flaticon-books"></i><span>Library</span></a>
-                            <ul class="nav sub-group-menu">
-                                <li class="nav-item">
-                                    <a href="all-book.html" class="nav-link"><i class="fas fa-angle-right"></i>All
-                                        Book</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="add-book.html" class="nav-link"><i class="fas fa-angle-right"></i>Add New
-                                        Book</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item sidebar-nav-item">
-                            <a href="#" class="nav-link"><i class="flaticon-technological"></i><span>Acconunt</span></a>
-                            <ul class="nav sub-group-menu">
-                                <li class="nav-item">
-                                    <a href="all-fees.html" class="nav-link"><i class="fas fa-angle-right"></i>All Fees
-                                        Collection</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="all-expense.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i>Expenses</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="add-expense.html" class="nav-link"><i class="fas fa-angle-right"></i>Add
-                                        Expenses</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item sidebar-nav-item">
-                            <a href="#" class="nav-link"><i
-                                    class="flaticon-maths-class-materials-cross-of-a-pencil-and-a-ruler"></i><span>Class</span></a>
-                            <ul class="nav sub-group-menu">
-                                <li class="nav-item">
-                                    <a href="all-class.html" class="nav-link"><i class="fas fa-angle-right"></i>All
-                                        Classes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="add-class.html" class="nav-link"><i class="fas fa-angle-right"></i>Add New
-                                        Class</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="all-subject.html" class="nav-link"><i
-                                    class="flaticon-open-book"></i><span>Subject</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="class-routine.html" class="nav-link"><i class="flaticon-calendar"></i><span>Class
-                                    Routine</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="student-attendence.html" class="nav-link"><i
-                                    class="flaticon-checklist"></i><span>Attendence</span></a>
-                        </li>
-                        <li class="nav-item sidebar-nav-item">
-                            <a href="#" class="nav-link"><i class="flaticon-shopping-list"></i><span>Exam</span></a>
-                            <ul class="nav sub-group-menu sub-group-active">
-                                <li class="nav-item">
-                                    <a href="exam-schedule.html" class="nav-link"><i class="fas fa-angle-right"></i>Exam
-                                        Schedule</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="exam-grade.html" class="nav-link menu-active"><i class="fas fa-angle-right"></i>Exam
-                                        Grades</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="transport.html" class="nav-link"><i
-                                    class="flaticon-bus-side-view"></i><span>Transport</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="hostel.html" class="nav-link"><i class="flaticon-bed"></i><span>Hostel</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="notice-board.html" class="nav-link"><i
-                                    class="flaticon-script"></i><span>Notice</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="messaging.html" class="nav-link"><i
-                                    class="flaticon-chat"></i><span>Messeage</span></a>
-                        </li>
-                        <li class="nav-item sidebar-nav-item">
-                            <a href="#" class="nav-link"><i class="flaticon-menu-1"></i><span>UI Elements</span></a>
-                            <ul class="nav sub-group-menu">
-                                <li class="nav-item">
-                                    <a href="button.html" class="nav-link"><i class="fas fa-angle-right"></i>Button</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="grid.html" class="nav-link"><i class="fas fa-angle-right"></i>Grid</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="ui-tab.html" class="nav-link"><i class="fas fa-angle-right"></i>Tab</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="progress-bar.html" class="nav-link"><i
-                                            class="fas fa-angle-right"></i>Progress Bar</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="map.html" class="nav-link"><i
-                                    class="flaticon-planet-earth"></i><span>Map</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="account-settings.html" class="nav-link"><i
-                                    class="flaticon-settings"></i><span>Account</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <?php  include 'sidebar.php';?>
             <!-- Sidebar Area End Here -->
             <div class="dashboard-content-one">
                 <!-- Breadcubs Area Start Here -->
@@ -450,9 +260,9 @@
                     <h3>Examination</h3>
                     <ul>
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="index.php">Home</a>
                         </li>
-                        <li>Exam Grade</li>
+                        <li>Exam Report</li>
                     </ul>
                 </div>
                 <!-- Breadcubs Area End Here -->
@@ -463,7 +273,7 @@
                             <div class="card-body">
                                 <div class="heading-layout1">
                                     <div class="item-title">
-                                        <h3>Add New Grade</h3>
+                                        <h3>Add New report</h3>
                                     </div>
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
@@ -479,36 +289,108 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form class="new-added-form">
+                                <form class="new-added-form" id="ad-report">
                                     <div class="row">
+
+
+                                            <?php 
+                                            
+                                                include 'serv/conn.php';
+                                                $id= $_GET['sid'];
+                                                $getreportee= mysqli_query($conn,"SELECT * FROM students WHERE s_id= '$id' ");
+                                                $repo= mysqli_fetch_array($getreportee);
+                                                $name= $repo['s_fName'].' '.$repo['s_lName'];
+                                                $class= $repo['s_class'];
+                                                $id= $repo['s_id'];
+
+                                            
+                                            ?>
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
-                                            <label>Grade Name</label>
-                                            <input type="text" placeholder="" class="form-control">
+                                            <label>Student Name</label>
+                                            <input type="text" name="name" placeholder="" class="form-control" value="<?php echo $name; ?>">
                                         </div>
+
+
+                                        <input type="hidden" name="sid" placeholder="" class="form-control" value="<?php echo $id; ?>">
+
+
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
-                                            <label>Grade Point</label>
-                                            <select class="select2">
-                                                <option value="">Please Select</option>
-                                                <option value="1">4.00</option>
-                                                <option value="2">3.65</option>
-                                                <option value="3">3.50</option>
-                                                <option value="3">3.00</option>
-                                                <option value="3">2.50</option>
+                                            <label>Select Subject</label>
+                                            <select class="select2" name="subject">
+                                                <option value="">Please Select subject</option>
+                                               <?php echo listsubject ();?>
+                                                
                                             </select>
                                         </div>
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
-                                            <label>Percentage From</label>
-                                            <input type="text" placeholder="" class="form-control">
+                                            <label>Class</label>
+                                            <input type="text" name="class" placeholder="" class="form-control" value="<?php echo $class; ?>">
                                         </div>
+
+
                                         <div class="col-12-xxxl col-lg-6 col-12 form-group">
-                                            <label>Percentage Upto</label>
-                                            <input type="text" placeholder="" class="form-control">
+                                            <label>Total class score   (40%)</label>
+                                            <input type="number" name="classscore" placeholder="" class="form-control">
                                         </div>
-                                        <div class="col-12 form-group">
+
+                                        <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                            <label>Total Exams score  (60%) </label>
+                                            <input type="number" name="examsscore" placeholder="" class="form-control">
+                                        </div>
+
+                                        <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                            <label>Overall score  (100%) </label>
+                                            <input type="number" name="overallscore" placeholder="" class="form-control">
+                                        </div>
+
+
+
+
+                                        <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                            <label>Position in class</label>
+                                            <input type="text" name="position" placeholder="" class="form-control">
+                                        </div>
+
+
+                                        <div class="col-12-xxxl col-lg-6 col-12 form-group">
+                                            <label>Grade</label>
+                                            <input type="text" name="grade" placeholder="" class="form-control">
+                                        </div>
+
+                                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Select Term*</label>
+                                    <select class="select2" name="term">
+                                        <option value="">Select term</option>
+                                        <option value="term1">First Term</option>
+                                        <option value="term2">Second Term</option>
+                                        <option value="term3">Third Term</option>
+                                        
+                                    </select>
+                                </div>
+
+
+                                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Year</label>
+                                    <select class="select2" name="year">
+                                        <option value="">Please Select</option>
+                                        <?php 
+                                        
+                                        for ($i=1999; $i <2050 ; $i++) { 
+
+                                            echo '<option value="'.$i.'">'.$i.'</option>';
+                                            # code...
+                                        }
+
+                                        
+                                        ?>
+                                        
+                                    </select>
+                                </div>
+                                        <!-- <div class="col-12 form-group">
                                             <label>Comments</label>
                                             <textarea class="textarea form-control" name="message" id="form-message"
                                                 cols="10" rows="4"></textarea>
-                                        </div>
+                                        </div> -->
                                         <div class="col-12 form-group mg-t-8">
                                             <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
                                             <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
@@ -525,7 +407,7 @@
                             <div class="card-body">
                                 <div class="heading-layout1">
                                     <div class="item-title">
-                                        <h3>Exam Grade Lists</h3>
+                                        <h3>Exam Report Lists</h3>
                                     </div>
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
@@ -1030,16 +912,14 @@
                     <!-- Exam Grade List Area End Here -->
                 </div>
                 <!-- All Subjects Area End Here -->
-                <footer class="footer-wrap-layout1">
-                    <div class="copyright">© Copyrights <a href="#">akkhor</a> 2019. All rights reserved. Designed by
-                        <a href="#">PsdBosS</a></div>
-                </footer>
+                <?php  include 'footer.php';?>
             </div>
         </div>
         <!-- Page Area End Here -->
     </div>
     <!-- jquery-->
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="ajax.js"></script>
     <!-- Plugins js -->
     <script src="js/plugins.js"></script>
     <!-- Popper js -->

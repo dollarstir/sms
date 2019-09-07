@@ -1,3 +1,4 @@
+<?php include 'core.php';?>
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -104,16 +105,22 @@
                                         <th>Student Name</th>
                                         <th>Gender</th>
                                         <th>Class</th>
-                                        <th>Term</th>
+                                        <th>Status</th>
                                         <th>Fee type</th>
                                         <th>Amount</th>
+                                        <th>Term</th>
+                                        <th>Paid by</th>
+                                        <th>Payer_cont</th>
                                         <th>Received by</th>
-                                        <th>Phone</th>
+                                        <th>Date paid</th>
+                                        <th>Year paid</th>
+                                       
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-            
+                                <tbody>  
+                                
+                                    <?php echo getfees();?>
                                 </tbody>
                             </table>
                         </div>

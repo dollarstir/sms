@@ -38,11 +38,12 @@
 
 
 <!-- notification -->
-
-<div class="notifyMessage" style="display:block;background-color:green;">
-        <!-- <i class="close fa fa-times fa-2x"></i> -->
-        <h4>Message</h4>
-        <p style="color:white;">Registration successfull</p>
+<div id="mcon">
+        <!-- <div class="notifyMessage" style="display:block;background-color:green;">
+                
+                <h4>Message</h4>
+                <p style="color:white;">Registration successfull</p>
+        </div> -->
 </div>
 <!-- Nofication -->
 
@@ -100,11 +101,14 @@
                             $studid= $stu['s_id'];
                             $name = $stu['s_fName'].' '.$stu['s_lName'];
                             $photo= $stu['s_photo'];
+                            $gender = $stu['s_gender'];
+
+                            $class= $stu['s_class'];
                             
                             
                             ?>
 
-                        <form class="new-added-form">
+                        <form class="new-added-form" id="fee-form">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Name *</label>
@@ -114,6 +118,12 @@
                                     <label>ID No *</label>
                                     <input type="text" name="sid" placeholder="" class="form-control" value="<?php echo $studid; ?> " readonly>
                                 </div>
+
+
+                                <input type="hidden" name="gender" placeholder="" class="form-control" value="<?php echo $gender; ?> ">
+                                <input type="hidden" name="class" placeholder="" class="form-control" value="<?php echo $class; ?> ">
+
+
 
 
                                 <input type="hidden" name="s_photo" placeholder="" class="form-control" value="<?php echo $photo; ?> " readonly>
@@ -127,13 +137,32 @@
                                         
                                     </select>
                                 </div>
+
+
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Select Term*</label>
+                                    <select class="select2" name="term">
+                                        <option value="">Select term</option>
+                                        <option value="term1">First Term</option>
+                                        <option value="term2">Second Term</option>
+                                        <option value="term3">Third Term</option>
+                                        
+                                    </select>
+                                </div>
+
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Amount *</label>
                                     <input type="text" name="amount" placeholder="" class="form-control">
                                 </div>
+
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Paid By:</label>
+                                    <input type="text" name="payer" placeholder="" class="form-control">
+                                </div>
+
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Payer's Phone</label>
-                                    <input type="text" name="payer-contact" placeholder="" class="form-control">
+                                    <input type="text" name="payer_contact" placeholder="" class="form-control">
                                 </div>
                                 <!-- <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>E-Mail Address</label>
@@ -147,10 +176,37 @@
                                         <option value="part">Part-Payment</option>
                                     </select>
                                 </div>
+
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Received by :</label>
+                                    <input type="text" name="receiver" placeholder="" class="form-control">
+                                </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Date</label>
-                                    <input type="text" placeholder="dd/mm/yy" class="form-control air-datepicker" data-position="bottom right" name="datepaid">
+                                    <input type="text" name="datepaid"  class="form-control air-datepicker" data-position="bottom right" name="datepaid" value="<?php echo date("d/m/Y");?>" readonly>
                                 </div>
+
+
+                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                    <label>Year</label>
+                                    <select class="select2" name="year">
+                                        <option value="">Please Select</option>
+                                        <?php 
+                                        
+                                        for ($i=1999; $i <2050 ; $i++) { 
+
+                                            echo '<option value="'.$i.'">'.$i.'</option>';
+                                            # code...
+                                        }
+
+                                        
+                                        ?>
+                                        
+                                    </select>
+                                </div>
+
+
+                                
                                 <div class="col-12 form-group mg-t-8">
                                     <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
                                     <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
@@ -169,6 +225,7 @@
     </div>
     <!-- jquery-->
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="ajax.js"></script>
     <!-- Plugins js -->
     <script src="js/plugins.js"></script>
     <!-- Popper js -->

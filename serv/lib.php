@@ -37,7 +37,14 @@ function contentTable($type) {
             ';
         }
 
-    } else if ($type == 'parents') {
+    }
+    
+    
+    
+    
+    
+    
+    else if ($type == 'parents') {
         while($results = mysqli_fetch_array($query)) {
             echo '
                 <tr>
