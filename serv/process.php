@@ -111,39 +111,37 @@ if(isset($_POST) || isset($_GET)) {
 
             extract($_POST);
 
-            if($results['status'] == "") {
-                if(isset($_FILES['p_photo'])) {
-                    $filename = $_FILES['p_photo']['name'];
-                    $file = $_FILES['p_photo']['tmp_name'];
-    
-                    $fileExt = explode('.', $filename);
-                    $fileExt = end($fileExt);
-    
-                    $uniq = uniqid('parent', false);
-                    $filename = $uniq.".".$fileExt;
-    
-                    if(in_array(strtolower($fileExt), array('jpg', 'jpeg', 'png'))) {
-                        if(move_uploaded_file($file, "../img/customImg/$filename")) {
-                            $p_photo = $filename;
-    
-                        } else {
-                            $results['status'] = 'error';
-                            $response['p_photo'] = "Cannot upload this picture!!";
-    
-                        }
+            if(isset($_FILES['p_photo'])) {
+                $filename = $_FILES['p_photo']['name'];
+                $file = $_FILES['p_photo']['tmp_name'];
+
+                $fileExt = explode('.', $filename);
+                $fileExt = end($fileExt);
+
+                $uniq = uniqid('parent', false);
+                $filename = $uniq.".".$fileExt;
+
+                if(in_array(strtolower($fileExt), array('jpg', 'jpeg', 'png'))) {
+                    if(move_uploaded_file($file, "../img/customImg/$filename")) {
+                        $p_photo = $filename;
+
                     } else {
                         $results['status'] = 'error';
-                        $response['p_photo'] = "Invalid picture format!!";
-    
-                    }    
-                } else {
-                    if($p_gender == 'Male') {
-                        $p_photo = 'male.jpg';
-    
-                    } else {
-                        $p_photo = 'female.jpg';
-    
+                        $response['p_photo'] = "Cannot upload this picture!!";
+
                     }
+                } else {
+                    $results['status'] = 'error';
+                    $response['p_photo'] = "Invalid picture format!!";
+
+                }    
+            } else {
+                if($p_gender == 'Male') {
+                    $p_photo = 'male.jpg';
+
+                } else {
+                    $p_photo = 'female.jpg';
+
                 }
             }
 
@@ -189,189 +187,56 @@ if(isset($_POST) || isset($_GET)) {
 
             extract($_POST);
 
-            if($results['status'] == "") {
-                if(isset($_FILES['t_photo'])) {
-                    $filename = $_FILES['t_photo']['name'];
-                    $file = $_FILES['t_photo']['tmp_name'];
-    
-                    $fileExt = explode('.', $filename);
-                    $fileExt = end($fileExt);
-    
-                    $uniq = uniqid('teacher', false);
-                    $filename = $uniq.".".$fileExt;
-    
-                    if(in_array(strtolower($fileExt), array('jpg', 'jpeg', 'png'))) {
-                        if(move_uploaded_file($file, "../img/customImg/$filename")) {
-                            $t_photo = $filename;
-    
-                        } else {
-                            $results['status'] = 'error';
-                            $response['t_photo'] = "Cannot upload this picture!!";
-    
-                        }
+            if(isset($_FILES['p_photo'])) {
+                $filename = $_FILES['t_photo']['name'];
+                $file = $_FILES['t_photo']['tmp_name'];
+
+                $fileExt = explode('.', $filename);
+                $fileExt = end($fileExt);
+
+                $uniq = uniqid('teacher', false);
+                $filename = $uniq.".".$fileExt;
+
+                if(in_array(strtolower($fileExt), array('jpg', 'jpeg', 'png'))) {
+                    if(move_uploaded_file($file, "../img/customImg/$filename")) {
+                        $t_photo = $filename;
+
                     } else {
                         $results['status'] = 'error';
-                        $response['t_photo'] = "Invalid picture format!!";
-    
-                    }    
-                } else {
-                    if($t_gender == 'Male') {
-                        $t_photo = 'male.jpg';
-    
-                    } else {
-                        $t_photo = 'female.jpg';
-    
+                        $response['t_photo'] = "Cannot upload this picture!!";
+
                     }
+                } else {
+                    $results['status'] = 'error';
+                    $response['t_photo'] = "Invalid picture format!!";
+
+                }    
+            } else {
+                if($t_gender == 'Male') {
+                    $t_photo = 'male.jpg';
+
+                } else {
+                    $t_photo = 'female.jpg';
+
                 }
             }
 
             $date = date('Y-m-d');
 
-            $password = uniqid("tch", false);
-            $username = $t_phone;
-
             if($results['status'] == '') {
-                $sql = "INSERT INTO teachers (t_fName, t_lName, t_gender, t_dob, t_dateAdded, t_photo, t_phone, t_religion, t_info, t_address, t_nationality, t_class, t_doAppoint, t_maritalStats, t_email, t_SSNITNum, t_NHISNum, t_username, t_password) VALUES ('$t_fName', '$t_lName', '$t_gender', '$t_dob', '$date', '$t_photo', '$t_phone', '$t_religion', '$t_info', '$t_address', '$t_nationality', $t_class, '$t_doAppoint', '$t_maritalStats', '$t_email', '$t_SSNITNum', '$t_NHISNum', '$username', '$password')";
+                $sql = "INSERT INTO teachers (t_fName, t_lName, t_gender, t_dateAdded, t_photo, t_phone, t_religion, t_info, t_address, t_nationality, t_class, t_doAppoint, t_email, t_SSNITNum, t_NHISNum) VALUES ('$t_fName', '$t_lName', '$t_gender', '$date', '$t_photo', '$t_phone', '$t_religion', '$t_info', '$t_address', '$t_nationality', $t_class, '$t_doAppoint', '$t_email', '$t_SSNITNum', '$t_NHISNum', $t_loginDetails)";
 
                 if(mysqli_query($conn, $sql)) {
                     $results['status'] = 'success';
-                    $response = "Add Teacher Successfully";
+                    $response = "Add student Successfully";
                     
                 }else{
                     $results['status'] = 'errorGen';
-                    $response = "Failed to add Teacher!!";
+                    $response = "Failed to add parent!!";
 
                 };
             }
 
-            $results['response'] = $response;
-            echo json_encode($results);
-        }
-    
-
-
-        if($_GET['func'] == 'updateStudent') {
-
-            $results = array();
-            $response = array();
-
-            $results['status'] = '';
-
-
-            extract($_POST);
-
-           
-            if(!empty($_FILES['s_photo']['name'])) {
-                $filename = $_FILES['s_photo']['name'];
-                $file = $_FILES['s_photo']['tmp_name'];
-
-                $fileExt = explode('.', $filename);
-                $fileExt = end($fileExt);
-
-                $uniq = uniqid('student', false);
-                $filename = $uniq.".".$fileExt;
-
-                if(in_array(strtolower($fileExt), array('jpg', 'jpeg', 'png'))) {
-                    if(move_uploaded_file($file, "../img/customImg/$filename")) {
-                        $s_photo = $filename;
-
-                        $sql = "UPDATE students SET s_fName = '$s_fName', s_lName = '$s_lName', s_gender = '$s_gender', s_dob = '$s_dob', s_doa = '$s_doa', s_photo = '$s_photo', s_nationality = '$s_nationality', s_religion = '$s_religion', s_class = '$s_class', s_homTelNum = '$s_homTelNum', s_docName = '$s_docName', s_docTel = '$s_docTel', s_fatherName = '$s_fatherName', s_motherName = '$s_motherName', s_info = '$s_info' WHERE s_id = '$s_id'";
-
-                        if(mysqli_query($conn, $sql)) {
-                            $results['status'] = 'success';
-                            $response = "Updated student Successfully";
-        
-                        } else {
-                            $results['status'] = 'Error';
-                            $response = "Could not update student";
-                        };
-
-                    } else {
-                        $results['status'] = 'error';
-                        $response['s_photo'] = "Cannot upload this picture!!";
-
-                    }
-                } else {
-                    $results['status'] = 'error';
-                    $response['s_photo'] = "Invalid picture format!!";
-
-                }    
-            } else {
-                $sql = "UPDATE students SET s_fName = '$s_fName', s_lName = '$s_lName', s_gender = '$s_gender', s_dob = '$s_dob', s_doa = '$s_doa', s_nationality = '$s_nationality', s_religion = '$s_religion', s_class = $s_class, s_homTelNum = '$s_homTelNum', s_docName = '$s_docName', s_docTel = '$s_docTel', s_fatherName = '$s_fatherName', s_motherName = '$s_motherName', s_info = '$s_info' WHERE s_id = $s_id";
-
-                if(mysqli_query($conn, $sql)) {
-                    $results['status'] = 'success';
-                    $response = "Updated student Successfully";
-
-                } else {
-                    $results['status'] = 'Error';
-                    $response = "Could not update student";
-                };
-            }        
-            
-            $results['response'] = $response;
-            echo json_encode($results);
-        }
-
-        if($_GET['func'] == 'updateTeacher') {
-
-            $results = array();
-            $response = array();
-
-            $results['status'] = '';
-
-
-            extract($_POST);
-
-           
-            if(!empty($_FILES['s_photo']['name'])) {
-                $filename = $_FILES['s_photo']['name'];
-                $file = $_FILES['s_photo']['tmp_name'];
-
-                $fileExt = explode('.', $filename);
-                $fileExt = end($fileExt);
-
-                $uniq = uniqid('student', false);
-                $filename = $uniq.".".$fileExt;
-
-                if(in_array(strtolower($fileExt), array('jpg', 'jpeg', 'png'))) {
-                    if(move_uploaded_file($file, "../img/customImg/$filename")) {
-                        $s_photo = $filename;
-
-                        $sql = "UPDATE students SET s_fName = '$s_fName', s_lName = '$s_lName', s_gender = '$s_gender', s_dob = '$s_dob', s_doa = '$s_doa', s_photo = '$s_photo', s_nationality = '$s_nationality', s_religion = '$s_religion', s_class = '$s_class', s_homTelNum = '$s_homTelNum', s_docName = '$s_docName', s_docTel = '$s_docTel', s_fatherName = '$s_fatherName', s_motherName = '$s_motherName', s_info = '$s_info' WHERE s_id = '$s_id'";
-
-                        if(mysqli_query($conn, $sql)) {
-                            $results['status'] = 'success';
-                            $response = "Updated student Successfully";
-        
-                        } else {
-                            $results['status'] = 'Error';
-                            $response = "Could not update student";
-                        };
-
-                    } else {
-                        $results['status'] = 'error';
-                        $response['s_photo'] = "Cannot upload this picture!!";
-
-                    }
-                } else {
-                    $results['status'] = 'error';
-                    $response['s_photo'] = "Invalid picture format!!";
-
-                }    
-            } else {
-                $sql = "UPDATE students SET s_fName = '$s_fName', s_lName = '$s_lName', s_gender = '$s_gender', s_dob = '$s_dob', s_doa = '$s_doa', s_nationality = '$s_nationality', s_religion = '$s_religion', s_class = $s_class, s_homTelNum = '$s_homTelNum', s_docName = '$s_docName', s_docTel = '$s_docTel', s_fatherName = '$s_fatherName', s_motherName = '$s_motherName', s_info = '$s_info' WHERE s_id = $s_id";
-
-                if(mysqli_query($conn, $sql)) {
-                    $results['status'] = 'success';
-                    $response = "Updated student Successfully";
-
-                } else {
-                    $results['status'] = 'Error';
-                    $response = "Could not update student";
-                };
-            }        
-            
             $results['response'] = $response;
             echo json_encode($results);
         }
@@ -454,72 +319,6 @@ if(isset($_POST) || isset($_GET)) {
 
                 }
             }
-        }
-
-        if($_GET['func'] == 'promote') {
-            $results = array();
-            $response = array();
-
-            $results['status'] = '';
-
-            foreach ($_POST['std_promo_chklist'] as $selected) {
-
-                $s_period = $_POST['s_period'];
-                $s_class = $_POST['s_class'];
-
-                $sql = "UPDATE students SET s_class = $s_class, s_currentPeriod = $s_period WHERE s_id = $selected";
-                if(mysqli_query($conn, $sql)) {
-
-                } else {
-                    $response[$selected] = "Student With ID ".$selected." cannot be promoted!!";
-
-                };
-            }
-
-            if(count($response) > 0) {
-                $results['status'] = 'Error';
-
-            } else {
-                $results['status'] = 'Success';
-
-            }
-
-            $results['response'] = $response;
-            echo json_encode($results);
-
-        }
-
-        if($_GET['func'] == 'routine') {
-            $results = array();
-            $response = array();
-
-            $results['status'] = '';
-
-            foreach ($_POST as $key => $value) {
-                if(empty($value)) {
-                    $results['status'] = 'Error';
-                }
-
-            }
-
-            extract($_POST);
-
-            if($results['status'] == '') {
-                $sql = "INSERT INTO class_routine (cr_classID, cr_subjectID, cr_teacherID, cr_startTime, cr_endTime, cr_day) VALUES ($cr_class, $cr_subject, $cr_teacher, '$cr_startTime', '$cr_endTime', '$cr_day')";
-
-                if(mysqli_query($conn, $sql)) {
-                    $results['status'] = 'Success';
-                    $results['response'] = "Routine added Successfully";
-                } else {
-                    $results['status'] = 'Error';
-                    $results['response'] = "Routine could not be added";
-                }
-            } else {
-                $results['status'] = 'Error';
-                $results['response'] = "A field is empty";
-            }
-
-            echo json_encode($results);
         }
 
         //////////////////////////////////////////////////////////////

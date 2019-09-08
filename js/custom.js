@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     $(".customForm input, .customForm select").on('change keyup', function() {
         $(this).css('border', 'unset');
 
@@ -38,13 +39,26 @@ $(document).ready(function() {
 
         function detailsDisp(response, _this) {
             _this.children("#preloader2").fadeOut(500);
+
             for (const key in response) {
                 if(key == 's_photo' || key == 'p_photo') {
                     $(".detailImg").attr('src', 'img/customImg/'+response[key])
                 } else {
                     $(".single-info-details ."+key).html(response[key])
-                }    
+                } 
+                
+                if(key == 's_id') {
+                    $(".actionEdit a").attr('href', 'admit-form-update.php?target='+response['s_id']);
+                } else if (key == 't_id') {
+                    $(".actionEdit a").attr('href', 'add-teacher-update.php?target='+response['t_id']);
+                } else if (key == 'p_id') {
+                    $(".actionEdit a").attr('href', 'add-parents-update.php?target='+response['p_id']);
+                } else {
+
+                }
             }
+
+            
         }
 
         if(type == undefined) {
@@ -88,6 +102,7 @@ $(document).ready(function() {
         var new_type = $(".customTable tbody tr input[value='"+id+"']").parent().prev().children('input').attr('class');
 
         viewDet(new_type, new_id);
+
     })
 
     $(".actionNext").on('click', function () {
@@ -95,8 +110,9 @@ $(document).ready(function() {
 
         var new_id = $(".customTable tbody tr input[value='"+id+"']").parent().next().children('input').val();
         var new_type = $(".customTable tbody tr input[value='"+id+"']").parent().next().children('input').attr('class');
-        
+
         viewDet(new_type, new_id);
+
     })
 
 
@@ -104,8 +120,11 @@ $(document).ready(function() {
     ///.......................................................///
     /////////////////////////////////////////////////////////////
     $(".actionView").on('click', function() {
+        var id = $(".single-info-details .spec").html();
+
         var new_id = $(this).parent().parent().parent().parent().children('input').val();
         var new_type = $(this).parent().parent().parent().parent().children('input').attr('class');
+
 
         viewDet(new_type, new_id);
     })

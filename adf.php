@@ -1,4 +1,6 @@
 <?php include 'core.php';?>
+<?php include 'serv/lib.php';?>
+<?php $elem = contentDetail('students', 0);?>
 
 <!doctype html>
 <html class="no-js" lang="">

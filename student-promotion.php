@@ -1,3 +1,5 @@
+<?php include 'serv/lib.php';?>
+
 <!doctype html>
 <html class="no-js" lang="">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -25,6 +27,8 @@
     <link rel="stylesheet" href="css/select2.min.css">
     <!-- Date Picker CSS -->
     <link rel="stylesheet" href="css/datepicker.min.css">
+    <!-- Data tables -->
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <!-- Modernize js -->
@@ -32,6 +36,11 @@
 </head>
 
 <body>
+    <div class="notifyMessage">
+        <i class="close fa fa-times fa-2x"></i>
+        <h4>Title</h4>
+        <p>Message</p>
+    </div>
     <!-- Preloader Start Here -->
     <div id="preloader"></div>
     <!-- Preloader End Here -->
@@ -62,6 +71,7 @@
                 <!-- Breadcubs Area End Here -->
                 <!-- Student Promotion Area Start Here -->
                 <div class="card height-auto">
+                    <div id="preloader2"></div>
                     <div class="card-body">
                         <div class="heading-layout1">
                             <div class="item-title">
@@ -78,54 +88,77 @@
                                 </div>
                             </div>
                         </div>
-                        <form class="new-added-form">
+                        <form class="new-added-form promoForm">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Current Session *</label>
                                     <select class="select2">
-                                        <option value="">2017-2018</option>
-                                        <option value="1">2018-2019</option>
-                                        <option value="2">2015-2016</option>
-                                        <option value="3">2014-2015</option>
+                                        <?php form_options("period", "");?>
                                     </select>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Promote Session *</label>
-                                    <select class="select2">
-                                        <option value="">2017-2018</option>
-                                        <option value="1">2018-2019</option>
-                                        <option value="2">2015-2016</option>
-                                        <option value="3">2014-2015</option>
+                                    <select name="s_period" class="select2">
+                                        <?php form_options("period", "");?>
                                     </select>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Promotion From Class *</label>
-                                    <select class="select2">
-                                        <option value="">Please Select *</option>
-                                        <option value="1">Play</option>
-                                        <option value="2">Nursery</option>
-                                        <option value="3">One</option>
-                                        <option value="3">Two</option>
-                                        <option value="3">Three</option>
-                                        <option value="3">Four</option>
-                                        <option value="3">Five</option>
+                                    <select class="select2 promo_sel">
+                                        <?php form_options("class", "");?>
                                     </select>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Promotion To Class *</label>
-                                    <select class="select2">
-                                        <option value="">Please Select *</option>
-                                        <option value="1">Play</option>
-                                        <option value="2">Nursery</option>
-                                        <option value="3">One</option>
-                                        <option value="3">Two</option>
-                                        <option value="3">Three</option>
-                                        <option value="3">Four</option>
-                                        <option value="3">Five</option>
+                                    <select name="s_class" class="select2">
+                                        <?php form_options("class", "");?>
                                     </select>
                                 </div>
+
+
+                                <div class="col-12">
+                                    <div class="card-body">
+                
+                                        <form class="mg-b-20">
+                                            <div class="row gutters-8">
+                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                    <input type="text" placeholder="Search by ID ..." class="rollSearch form-control">
+                                                </div>
+                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                    <input type="text" placeholder="Search by Name ..." class="nameSearch form-control">
+                                                </div>
+                                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                                    <input type="text" placeholder="Search by Any Criteria ..." class="Search form-control">
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                        <div class="table-responsive">
+                                            <table class="customTable table display data-table text-nowrap">
+                                                <thead>
+                                                    <tr>
+                                                        <th> 
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input checkAll">
+                                                                <label class="form-check-label">ID</label>
+                                                            </div>
+                                                        </th>
+                                                        <th>Photo</th>
+                                                        <th>Name</th>
+                                                        <th>Class</th>
+                                                        <th>Exam score</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="std_promo_list">
+                                                   
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-12 form-group mg-t-8">
-                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Promote</button>
                                     <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
                                 </div>
                             </div>
@@ -154,8 +187,12 @@
     <script src="js/jquery.smoothscroll.min.html"></script>
     <!-- Scroll Up Js -->
     <script src="js/jquery.scrollUp.min.js"></script>
+    <!-- Data Table -->
+    <script src="js/jquery.dataTables.min.js"></script>
     <!-- Custom Js -->
     <script src="js/main.js"></script>
+    <!-- User Defined -->
+    <script src="js/custom.js"></script>
 
 </body>
 </html>

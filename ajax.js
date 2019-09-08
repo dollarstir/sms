@@ -1,9 +1,8 @@
 $(document).ready(function () {
-
-  
-
-    
-   
+    $(".print").click(function () {
+        $(this).fadeOut(800);
+        window.print();
+    })
 
 
     function regsuccess(response) {

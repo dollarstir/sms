@@ -136,6 +136,7 @@ if (isset($_GET['dollar'])) {
             $grade=$_POST['grade'];
             $term= $_POST['term'];
             $year= $_POST['year'];
+            $remark= $_POST['remark'];
             
 
             if (empty($subject)) {
@@ -219,7 +220,7 @@ if (isset($_GET['dollar'])) {
         
             else {
 
-            echo addreport($sid,$name,$subject,$class,$classscore,$examsscore,$overallscore,$position,$grade,$term,$year); 
+            echo addreport($sid,$name,$subject,$class,$classscore,$examsscore,$overallscore,$position,$grade,$term,$year,$remark); 
             }
 
             # code...

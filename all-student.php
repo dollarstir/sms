@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="style.css">
     <!-- Modernize js -->
     <script src="js/modernizr-3.6.0.min.js"></script>
+        <!-- jquery-->
+    <script src="js/jquery-3.3.1.min.js"></script>
+
 </head>
 
 <body>
@@ -124,7 +127,7 @@
                             </table>
                         </div>
                     </div>
-                </div>bv
+                </div>
 
                 <div style="position: relative" id="detailCard" class="detailCard card height-auto">
                     <div id="preloader2" style="display: none"></div>
@@ -192,6 +195,7 @@
                                             <tr>
                                                 <td>Roll:</td>
                                                 <td class="spec s_id font-medium text-dark-medium"><?php echo $elem['s_id']?></td>
+          
                                             </tr>
                                             <tr>
                                                 <td>Address:</td>
@@ -217,6 +221,7 @@
     </div>
     <!-- jquery-->
     <script src="js/jquery-3.3.1.min.js"></script>
+
     <!-- Plugins js -->
     <script src="js/plugins.js"></script>
     <!-- Popper js -->
@@ -227,9 +232,28 @@
     <script src="js/jquery.scrollUp.min.js"></script>
     <!-- Data Table Js -->
     <script src="js/jquery.dataTables.min.js"></script>
+
+
+    <script src="js/dataTables.buttons.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+    <script src="js/buttons.html5.min.js"></script>
+    <script src="js/pdfmake.min.js"></script>
+    <script src="js/vfs_fonts.js"></script>
+
+    <style>
+    .buttons-html5 {
+        border: none;
+        padding: 5px 20px;
+        margin: 10px;
+        background: lightgreen;
+    }
+    
+    </style>
+
     <!-- Custom Js -->
     <script src="js/main.js"></script>
     <!-- User Defined -->
+
     <script src="js/custom.js"></script>
 
 </body>

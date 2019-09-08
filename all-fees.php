@@ -78,13 +78,13 @@
                         <form class="mg-b-20">
                             <div class="row gutters-8">
                                 <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">
-                                    <input type="text" placeholder="Search by ID ..." class="form-control">
+                                    <input type="text" placeholder="Search by ID ..." class="rollSearch form-control">
                                 </div>
                                 <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
-                                    <input type="text" placeholder="Search by Name ..." class="form-control">
+                                    <input type="text" placeholder="Search by Name ..." class="nameSearch form-control">
                                 </div>
                                 <div class="col-4-xxxl col-xl-3 col-lg-3 col-12 form-group">
-                                    <input type="text" placeholder="Search by Phone" class="form-control">
+                                    <input type="text" placeholder="Search by Phone" class="Search form-control">
                                 </div>
                                 <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
                                     <button type="submit" class="fw-btn-fill btn-gradient-yellow">SEARCH</button>
@@ -146,7 +146,24 @@
     <script src="js/jquery.scrollUp.min.js"></script>
     <!-- Custom Js -->
     <script src="js/main.js"></script>
-
+    <!-- Custom Js -->
+    <script src="js/custom.js"></script>
 </body>
 
+
+<script src="js/dataTables.buttons.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+    <script src="js/buttons.html5.min.js"></script>
+    <script src="js/vfs_fonts.js"></script>
+    <script src="js/pdfmake.min.js"></script>
+
+    <style>
+    .buttons-html5 {
+        border: none;
+        padding: 5px 20px;
+        margin: 10px;
+        background: lightgreen;
+    }
+    
+    </style>
 </html>

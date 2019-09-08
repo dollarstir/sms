@@ -185,5 +185,21 @@
     <!-- User Defined -->
     <script src="js/custom.js"></script>
 
+
+    <script src="js/dataTables.buttons.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+    <script src="js/buttons.html5.min.js"></script>
+    <script src="js/vfs_fonts.js"></script>
+    <script src="js/pdfmake.min.js"></script>
+
+    <style>
+    .buttons-html5 {
+        border: none;
+        padding: 5px 20px;
+        margin: 10px;
+        background: lightgreen;
+    }
+    
+    </style>
 </body>
 </html>

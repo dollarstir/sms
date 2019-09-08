@@ -45,6 +45,10 @@ function contentTable($type) {
                                     <i class="actionEdit fas fa-cogs text-dark-pastel-green"></i>
                                     Edit
                                 </a>
+                                <a class="dropdown-item" href="deleteItem.php?item=students&target='.$results["s_id"].'">
+                                    <i class="fas fa-times-circle text-orange-red"></i>
+                                    Delete
+                                </a>
                             </div>
                         </div>
                     </td>
@@ -77,13 +81,17 @@ function contentTable($type) {
                                 <span class="flaticon-more-button-of-three-dots"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="actionView dropdown-item">
+                                <a class="actionView dropdown-item" href="#detailCard">
                                     <i class="fas fa-user-cog text-dark-pastel-green"></i>
                                     View
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="add-parents-update.php?target='.$results['p_id'].'">
                                     <i class="actionEdit fas fa-cogs text-dark-pastel-green"></i>
                                     Edit
+                                </a>
+                                <a class="dropdown-item" href="deleteItem.php?item=parents&target='.$results["p_id"].'">
+                                   <i class="fas fa-times-circle text-orange-red"></i>
+                                    Delete
                                 </a>
                             </div>
                         </div>
@@ -129,13 +137,17 @@ function contentTable($type) {
                                     <i class="actionEdit fas fa-cogs text-dark-pastel-green"></i>
                                     Edit
                                 </a>
+                                <a class="dropdown-item" href="deleteItem.php?item=teachers&target='.$results["t_id"].'">
+                                    <i class="fas fa-times-circle text-orange-red"></i>
+                                    Delete
+                                </a>
                             </div>
                         </div>
                     </td>
                 </tr>
             ';
         }
-    } else if($type == 'class'){
+    } else if ($type == 'class'){
         while($results = mysqli_fetch_array($query)) {
             $id =  $results['c_id'];
             $t_sql = "SELECT * FROM teachers WHERE t_id = $id";
@@ -160,13 +172,116 @@ function contentTable($type) {
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-times-circle text-orange-red"></i>Delete</a>
+                                <a class="dropdown-item" href="deleteItem.php?item=class&target='.$results["c_id"].'"><i class="fas fa-times-circle text-orange-red"></i>Delete</a>
                             </div>
                         </div>
                     </td>
                 </tr>
             ';
         }
+    } else if ($type == 'expenses') {
+        while($results = mysqli_fetch_array($query)) {
+            echo '
+                <tr>
+                    <input class="expenses" type="hidden" value="'.$results['exp_id'].'">
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input">
+                            <label class="form-check-label">'.$results["exp_no"].'</label>
+                        </div>
+                    </td>
+                    <td>'.$results["exp_name"].'</td>
+                    <td>'.$results["exp_type"].'</td>
+                    <td>'.$results["exp_amount"].'</td>
+                    <td>'.$results["exp_status"].'</td>
+                    <td>'.$results["exp_phone"].'</td>
+                    <td>'.$results["exp_email"].'</td>
+                    <td>
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="flaticon-more-button-of-three-dots"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="deleteItem.php?item=expenses&target='.$results["exp_id"].'"><i class="fas fa-times-circle text-orange-red"></i>Delete</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            ';
+        }
+    } else if ($type == 'transport') {
+        while($results = mysqli_fetch_array($query)) {
+            
+          
+        
+            
+
+            echo '
+                <tr>
+                    <input class="transport" type="hidden" value="'.$results['tr_id'].'">
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input">
+                            <label class="form-check-label">'.$results['tr_id'].'</label>
+                        </div>
+                    </td>
+                    
+                    <td>'.$results['rn_name'].'</td>
+                    <td>'.$results['vn_name'].'</td>
+                    <td>'.$results['dn_name'].'</td>
+                    <td>'.$results['ln_name'].'</td>
+                    <td>'.$results['pn_name'].'</td>
+                </tr>
+            ';
+        }
+
+    } else if ($type == 'uniform') {
+        while($results = mysqli_fetch_array($query)) {
+            
+           
+            
+
+            echo '
+                <tr>
+                    <input class="uniform" type="hidden" value="'.$results['un_id'].'">
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input">
+                            <label class="form-check-label">'.$results['un_id'].'</label>
+                        </div>
+                    </td>
+                    
+                    <td>'.$results['un_type'].'</td>
+                    <td>'.$results['un_size'].'</td>
+                    <td>'.$results['un_gender'].'</td>
+                </tr>
+            ';
+        }
+
+    } else if ($type == 'book') {
+        while($results = mysqli_fetch_array($query)) {
+            
+         
+        
+            
+
+            echo '
+                <tr>
+                    <input class="uniform" type="hidden" value="'.$results['bk_id'].'">
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input">
+                            <label class="form-check-label">'.$results['bk_id'].'</label>
+                        </div>
+                    </td>
+                    
+                    <td>'.$results['bk_title'].'</td>
+                    <td>'.$results['author'].'</td>
+                    <td>'.$results['publisher'].'</td>
+                </tr>
+            ';
+        }
+
     } else {
 
     }

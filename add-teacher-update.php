@@ -38,9 +38,14 @@ $results = mysqli_fetch_array($query);
     <link rel="stylesheet" href="style.css">
     <!-- Modernize js -->
     <script src="js/modernizr-3.6.0.min.js"></script>
+        <!-- jquery-->
+        <script src="js/jquery-3.3.1.min.js"></script>
 </head>
 
-<body>
+<body> 
+    <div class="buttonUp" style="padding: 20px;">
+        <i class="fa fa-times fa-2x"></i>
+    </div>
     <div class="notifyMessage">
         <i class="close fa fa-times fa-2x"></i>
         <h4>Title</h4>
@@ -241,7 +246,11 @@ $results = mysqli_fetch_array($query);
     <script src="js/main.js"></script>
     <!-- User Defined -->
     <script src="js/custom.js"></script>
-
+    <script>
+        $(".buttonUp").click(function() {
+            window.location = "all-teacher.php";
+        })
+    </script>
 
 </body>
 </html>

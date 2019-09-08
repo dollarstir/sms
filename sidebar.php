@@ -62,10 +62,10 @@
                         <a href="add-teacher.php" class="nav-link"><i class="fas fa-angle-right"></i>Add
                             Teacher</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="teacher-payment.php" class="nav-link"><i
                                 class="fas fa-angle-right"></i>Payment</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
 
@@ -84,15 +84,15 @@
             </li>
 
             <li class="nav-item sidebar-nav-item">
-                <a href="#" class="nav-link"><i class="flaticon-books"></i><span>Library</span></a>
+                <a href="#" class="nav-link"><i class="flaticon-books"></i><span>Inventory</span></a>
                 <ul class="nav sub-group-menu">
                     <li class="nav-item">
-                        <a href="all-book.php" class="nav-link"><i class="fas fa-angle-right"></i>All
-                            Book</a>
+                        <a href="all-book.php" class="nav-link"><i class="fas fa-angle-right"></i>
+                            Uniforms</a>
                     </li>
                     <li class="nav-item">
-                        <a href="add-book.php" class="nav-link"><i class="fas fa-angle-right"></i>Add New
-                            Book</a>
+                        <a href="add-book.php" class="nav-link"><i class="fas fa-angle-right"></i>
+                            Books</a>
                     </li>
                 </ul>
             </li>
@@ -100,7 +100,7 @@
             <li class="nav-item sidebar-nav-item">
                 <a href="#" class="nav-link"><i class="flaticon-technological"></i><span>Account</span></a>
                 <ul class="nav sub-group-menu">
-                <li class="nav-item">
+                    <li class="nav-item">
                         <a href="adf.php" class="nav-link"><i class="fas fa-angle-right"></i>Add Fees
                             </a>
                     </li>
@@ -143,10 +143,10 @@
                         Routine</span></a>
             </li> -->
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="student-attendence.php" class="nav-link"><i
                         class="flaticon-checklist"></i><span>Attendence</span></a>
-            </li>
+            </li> -->
 
             <li class="nav-item sidebar-nav-item">
                 <a href="#" class="nav-link"><i class="flaticon-shopping-list"></i><span>Exam</span></a>

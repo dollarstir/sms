@@ -128,10 +128,10 @@
                                     <div class="header-elements">
                                         <ul>
                                             <li class="actionPrevious"><a><i class="fa fa-arrow-left"></i></a></li>
-                                            <li class="actionEdit"><a><i class="far fa-edit"></i></a></li>
+                                            <li class="actionEdit"><a href="add-parents-update.php?target=<?php echo $elem['p_id']?>"><i class="far fa-edit"></i></a></li>
                                             <li class="actionNext"><a><i class="fa fa-arrow-right"></i></a></li>
                                         </ul>
-                                    </div>
+                                    </div> 
                                 </div>
                                 <p class="p_info"><?php echo $elem['p_info'];?></p>
                                 <div class="info-table table-responsive">
@@ -201,6 +201,22 @@
     <!-- User Defined -->
     <script src="js/custom.js"></script>
 
+
+    <script src="js/dataTables.buttons.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+    <script src="js/buttons.html5.min.js"></script>
+    <script src="js/pdfmake.min.js"></script>
+    <script src="js/vfs_fonts.js"></script>
+
+    <style>
+    .buttons-html5 {
+        border: none;
+        padding: 5px 20px;
+        margin: 10px;
+        background: lightgreen;
+    }
+    
+    </style>
 
 </body>
 </html>

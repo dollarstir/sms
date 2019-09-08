@@ -137,7 +137,7 @@
                                     <div class="header-elements">
                                         <ul>
                                             <li class="actionPrevious"><a><i class="fa fa-arrow-left"></i></a></li>
-                                            <li class="actionEdit"><a><i class="far fa-edit"></i></a></li>
+                                            <li class="actionEdit"><a href="add-teacher-update.php?target=<?php echo $elem['t_id']?>"><i class="far fa-edit"></i></a></li>
                                             <li class="actionNext"><a><i class="fa fa-arrow-right"></i></a></li>
                                         </ul>
                                     </div>
@@ -188,7 +188,7 @@
                                             </tr>
                                             <tr>
                                                 <td>ID:</td>
-                                                <td class="font-medium text-dark-medium t_id"><?php echo $elem['t_id'];?></td>
+                                                <td class="spec font-medium text-dark-medium t_id"><?php echo $elem['t_id'];?></td>
                                             </tr>
                                             <tr>
                                                 <td>Marital Status:</td>
@@ -225,6 +225,22 @@
     <!-- User Defined -->
     <script src="js/custom.js"></script>
 
+
+    <script src="js/dataTables.buttons.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+    <script src="js/buttons.html5.min.js"></script>
+    <script src="js/pdfmake.min.js"></script>
+    <script src="js/vfs_fonts.js"></script>
+
+    <style>
+    .buttons-html5 {
+        border: none;
+        padding: 5px 20px;
+        margin: 10px;
+        background: lightgreen;
+    }
+    
+    </style>
 
 </body>
 </html>

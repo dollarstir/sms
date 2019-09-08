@@ -1,3 +1,4 @@
+<?php include 'serv/lib.php';?>
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -63,6 +64,41 @@
                 <div class="row">
                     <!-- Add Transport Area Start Here -->
                     <div class="col-4-xxxl col-12">
+                    <?php 
+                                    include "serv/conn.php";
+                                     if(isset($_POST['submit'])) {
+                                      $rnname = $_POST['rt_name'];
+                                      $vnname = $_POST['vn_name'];
+                                      $dnname = $_POST['dn_name'];
+                                      $lnname = $_POST['ln_name'];
+                                      $pnname = $_POST['pn_name'];
+                                        if (empty( $rnname)) {
+                                            echo "Please enter value";
+                                        }elseif (empty($vnname)) {
+                                            echo "Please enter value";
+                                        }elseif (empty($dnname)) {
+                                            echo "Please enter value";
+                                        }elseif (empty($lnname)) {
+                                            echo "Please enter value";
+                                        }elseif (empty($pnname)) {
+                                            echo "Please enter value";
+                                        }elseif (strlen($pnname) < 10 ) {
+                                            echo "Incorrect number";
+                                        }
+                                        else {
+                                            $sql = " SELECT * FROM transport WHERE ln_name = '$lnname' ";
+                                            $log = mysqli_query($conn, $sql);
+                                            if (mysqli_num_rows($log) > 0) {
+                                                echo "data already exist";
+                                            }else {
+                                                $sql = "INSERT INTO transport ( rn_name, vn_name, dn_name, ln_name, pn_name) VALUES ( '$rnname', '$vnname', '$dnname', '$lnname', '$pnname')";
+                                                $log = mysqli_query($conn, $sql);
+                                                echo "success";
+                                            }
+
+                                        }
+                                    }
+                                    ?>
                         <div class="card height-auto">
                             <div class="card-body">
                                 <div class="heading-layout1">
@@ -83,33 +119,35 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form class="new-added-form">
+                              
+                                <form class="new-added-form" method="POST">
                                     <div class="row">
                                         <div class="col-12-xxxl col-xl-4 col-sm-6 col-12 form-group">
                                             <label>Route Name</label>
-                                            <input type="text" placeholder="" class="form-control">
+                                            <input type="text" placeholder="" name="rt_name" class="form-control">
                                         </div>
                                         <div class="col-12-xxxl col-xl-4 col-sm-6 col-12 form-group">
                                             <label>Vehicle Number</label>
-                                            <input type="text" placeholder="" class="form-control">
+                                            <input type="text" placeholder="" name="vn_name" class="form-control">
                                         </div>
                                         <div class="col-12-xxxl col-xl-4 col-sm-6 col-12 form-group">
                                             <label>Driver Name</label>
-                                            <input type="text" placeholder="" class="form-control">
+                                            <input type="text" placeholder="" name="dn_name" class="form-control">
                                         </div>
                                         <div class="col-12-xxxl col-xl-4 col-sm-6 col-12 form-group">
                                             <label>License Number</label>
-                                            <input type="text" placeholder="" class="form-control">
+                                            <input type="text" placeholder="" name="ln_name" class="form-control">
                                         </div>
                                         <div class="col-12-xxxl col-xl-4 col-sm-6 col-12 form-group">
                                             <label>Phone Number</label>
-                                            <input type="text" placeholder="" class="form-control">
+                                            <input type="varchar" placeholder="" name="pn_name" class="form-control">
                                         </div>
                                         <div class="col-12 form-group mg-t-8">
-                                            <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                                            <button type="submit" name="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
                                             <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
                                         </div>
                                     </div>
+                                   
                                 </form>
                             </div>
                         </div>
@@ -162,45 +200,21 @@
                                                 <th>
                                                     <div class="form-check">
                                                         <input type="checkbox" class="form-check-input checkAll">
-                                                        <label class="form-check-label">Route Name</label>
+                                                        <label class="form-check-label">ID</label>
                                                     </div>
                                                 </th>
+                                                <th>Route Name</th>
                                                 <th>Vehicle No</th>
                                                 <th>Driver Name</th>
                                                 <th>Driver License</th>
                                                 <th>Contact Number</th>
-                                                <th></th>
+                                               
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <!-- <tr>
-                                                <td>
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input">
-                                                        <label class="form-check-label">Wales Road </label>
-                                                    </div>
-                                                </td>
-                                                <td>MT988800</td>
-                                                <td>Johnathan John</td>
-                                                <td>DLNC025936</td>
-                                                <td>+889562365846</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                                            aria-expanded="false">
-                                                            <span class="flaticon-more-button-of-three-dots"></span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#"><i
-                                                                    class="fas fa-times text-orange-red"></i>Close</a>
-                                                            <a class="dropdown-item" href="#"><i
-                                                                    class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                                            <a class="dropdown-item" href="#"><i
-                                                                    class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>  -->
+                                           <?php
+                                           contentTable('transport');
+                                           ?>
                                         </tbody>
                                     </table>
                                 </div>

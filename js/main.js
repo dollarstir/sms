@@ -88,6 +88,10 @@
           targets: [0, -1], // column or columns numbers
           orderable: false // set orderable for selected columns
         }],
+        dom: 'Bfrtip',
+        buttons: [
+          'excelHtml5', 'pdfHtml5'
+        ]
       });
 
       window.dataCustom = data;

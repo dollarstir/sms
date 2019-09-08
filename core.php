@@ -158,11 +158,11 @@ function listsubject (){
 
 
 
-function addreport($sid,$name,$subject,$class,$classscore,$examsscore,$overallscore,$position,$grade,$term,$year)
+function addreport($sid,$name,$subject,$class,$classscore,$examsscore,$overallscore,$position,$grade,$term,$year,$remark)
 
 {
     include 'serv/conn.php';
-    $popo= mysqli_query($conn,"INSERT INTO exams (s_id,s_name,subjects,class,classscore,examsscore,overallscore,position,grade,term,year) VALUES ('$sid','$name','$subject','$class','$classscore','$examsscore','$overallscore','$position','$grade','$term','$year')");
+    $popo= mysqli_query($conn,"INSERT INTO exams (s_id,s_name,subjects,class,classscore,examsscore,overallscore,position,grade,term,year,remark) VALUES ('$sid','$name','$subject','$class','$classscore','$examsscore','$overallscore','$position','$grade','$term','$year','$remark')");
 
     if ($popo) {
 
@@ -209,6 +209,7 @@ function showallreports(){
         $position = $rept['position'];
         $term = $rept['term'];
         $year = $rept['year'];
+        $remark = $rept['remark'];
 
         echo'<tr>
         <td>
@@ -231,6 +232,7 @@ function showallreports(){
         <td>'.$position.'</td>
         <td>'.$term.'</td>
         <td>'.$year.'</td>
+        <td>'.$remark.'</td>
 
         <td><a href="editreport.php?rid='.$id.'">Edit</a></td>
         <td><a href="delrep.php?rid='.$id.'">Delete</a></td>
